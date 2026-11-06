@@ -1,4 +1,5 @@
 import os
+import re
 
 APPIMAGE_FOLDER = os.path.expanduser("~/Documents/AppImages")
 APPLICATIONS_FOLDER = os.path.expanduser("~/.local/share/applications/AppImages")
@@ -11,7 +12,8 @@ desktop_files_to_remove = os.listdir(APPLICATIONS_FOLDER)
 
 for file_name in image_files_names:
     file_path = os.path.join(APPIMAGE_FOLDER, file_name)
-    app_name = file_name.replace(".AppImage.new", "").replace(".AppImage", "")
+    # This regex is meant to catch extensions like ".AppImage.new" some AppImages use when downloading an updated version of themselves
+    app_name = re.sub(r"\.AppImage.*?$", "", file_name)
     desktop_file_name = app_name + ".desktop"
     if desktop_file_name in desktop_files_to_remove:
         desktop_files_to_remove.remove(desktop_file_name)
