@@ -1,0 +1,10 @@
+[project]
+name = "appimagedesktopmaker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "energistix", email = "50068022+energistix@users.noreply.github.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
